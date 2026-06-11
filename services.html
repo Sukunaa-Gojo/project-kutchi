@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Kutchi Research | Deep Service Ecosystem — B2B Growth & KPO</title>
+    <link rel="shortcut icon" href="ChatGPT Image Jun 5, 2026, 11_51_53 AM.png" type="image/x-icon">
+ <meta name="description" content="Explore kutchi's full suite of B2B growth intelligence, lead generation, automation, KPO & revenue operations. 30+ specialized service modules.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+  --bg: #070709;
+      --bg-2: #0c0c10;
+      --bg-3: #111116;
+      --surface: rgba(255,255,255,0.032);
+      --surface-2: rgba(255,255,255,0.055);
+      --border: rgba(255,255,255,0.068);
+      --border-hi: rgba(100, 255, 180, 0.28);
+      --accent: #41ffaa;
+      --accent-2: #00ddff;
+      --accent-dim: rgba(65,255,170,0.07);
+      --accent-dim2: rgba(65,255,170,0.12);
+      --text: #eeeef0;
+      --text-2: #7a7a86;
+      --text-3: #3f3f4a;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      --radius: 12px;
+      --radius-lg: 24px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.15s, height 0.15s;
+    }
+
+    #cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(65, 255, 170, 0.35);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.22s, height 0.22s;
+    }
+
+    #cursor-dot.large { width: 16px; height: 16px; background: var(--accent); }
+    #cursor-ring.large { width: 52px; height: 52px; border-color: rgba(65, 255, 170, 0.6); }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 10001;
+      width: 0%;
+      transition: width 0.08s linear;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      cursor: none;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, var(--accent), var(--accent-2));
+      color: #0B0B0B;
+      box-shadow: 0 10px 30px rgba(65, 255, 170, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(65, 255, 170, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(65, 255, 170, 0.4);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 7, 9, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo span { background: none; -webkit-background-clip: unset; color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-2);
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: linear-gradient(145deg, var(--accent), var(--accent-2));
+      color: #0B0B0B;
+      border-radius: 60px;
+      padding: 14px 32px;
+      font-weight: 700;
+      z-index: 99;
+      box-shadow: 0 8px 25px rgba(65, 255, 170, 0.3);
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sticky-cta:hover { transform: scale(1.05); }
+
+    .service-mega-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 32px;
+      margin: 60px 0 40px;
+    }
+
+    .service-tile {
+      background: var(--bg-2);
+      border-radius: 32px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: var(--transition);
+      backdrop-filter: blur(4px);
+      position: relative;
+    }
+
+    .service-tile:hover {
+      transform: translateY(-10px);
+      border-color: var(--border-hi);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .tile-header {
+      background: linear-gradient(145deg, rgba(65,255,170,0.07), transparent);
+      padding: 28px 28px 16px 28px;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .tile-icon {
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .tile-header h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+    }
+
+    .tile-badge {
+      display: inline-block;
+      background: var(--accent-dim);
+      padding: 4px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.3px;
+      margin-top: 8px;
+    }
+
+    .tile-body {
+      padding: 24px 28px 28px;
+    }
+
+    .tile-body p {
+      color: var(--text-2);
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 18px 0;
+    }
+
+    .feature-list li {
+      padding: 6px 0;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text-2);
+    }
+
+    .feature-list li i {
+      color: var(--accent);
+      font-size: 0.8rem;
+      width: 20px;
+    }
+
+    .tile-footer {
+      padding: 18px 28px 28px;
+      border-top: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .pill {
+      background: var(--bg-3);
+      padding: 6px 12px;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      color: var(--text-2);
+      transition: var(--transition);
+    }
+
+    .pill:hover {
+      background: var(--accent-dim);
+      color: var(--accent);
+    }
+
+    .metric-highlight {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-top: 12px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .learn-more {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: gap 0.2s;
+    }
+
+    .learn-more:hover { gap: 14px; }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 50px 0 30px;
+      margin-top: 60px;
+    }
+
+    .footer-links a {
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 2;
+      display: block;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    hr { border-color: var(--border); margin: 32px 0; }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+      .service-mega-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7,7,9,0.97);
+      backdrop-filter: blur(24px);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 40px 24px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent); }
+    .mobile-nav .btn {
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none !important; }
+      .navbar .btn-outline { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .service-mega-grid { grid-template-columns: 1fr; gap: 20px; }
+      .sticky-cta { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 0.85rem; }
+      footer .container > div { flex-direction: column; gap: 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="progress-bar"></div>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html" class="active">Services</a>
+  <a href="about.html">About Us</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contacts.html">Contact</a>
+  <a href="contacts.html" class="btn btn-primary btn-lg">Get Proposal</a>
+</div>
+
+ 
+
+<nav class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">Kutchi<span>Research</span></div>
+    <div class="nav-links">
+      <a href="index.html" >Home</a>
+      <a href="services.html" class="active">Services</a>
+     
+      <a href="about.html">About Us</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contacts.html">contacts</a>
+    </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+    <a href="contacts.html" class="btn btn-outline">Get Proposal</a>
+  </div>
+</nav>
+
+<section style="padding: 60px 0 40px 0;">
+  <div class="container">
+    <div class="reveal" style="text-align: center;">
+      <div class="badge"><i class="fas fa-cube"></i> 360 DEGREE GROWTH ARCHITECTURE</div>
+      <h1>Service Ecosystem <span class="gradient-text">Engineered for Scale</span></h1>
+      <p style="font-size: 1.2rem; color: var(--text-2); max-width: 780px; margin: 20px auto;">From strategic KPO to hyper-automation. 30+ specialized modules that integrate seamlessly into your revenue stack.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="service-mega-grid">
+    
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-chart-line"></i></div><h3>AI Lead Gen and Intent Scoring</h3><div class="tile-badge">FLAGSHIP</div></div>
+      <div class="tile-body"><p>Predictive lead generation using B2B intent signals, technographic data, and real-time buyer journey analysis. Identify accounts showing strong purchase signals before competitors.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 1M+ decision-maker contactss enriched</li><li><i class="fas fa-check-circle"></i> 87% accurate intent prediction</li><li><i class="fas fa-check-circle"></i> Custom ICP scoring models</li></ul><div class="pill-group"><span class="pill">ABM ready</span><span class="pill">ZoomInfo integration</span><span class="pill">Real-time alerts</span></div><div class="metric-highlight"><span>ROI: 6.3x avg first year</span><span>240% pipeline growth</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Explore lead intelligence <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-microscope"></i></div><h3>Strategic KPO and Market Intel</h3><div class="tile-badge">DEEP RESEARCH</div></div>
+      <div class="tile-body"><p>Domain-specific knowledge process outsourcing: competitive landscaping, TAM and SAM and SOM analysis, win-loss intelligence, voice of customer research, and M&A scouting.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 150+ research analysts</li><li><i class="fas fa-check-circle"></i> Industry 4.0, fintech, pharma experts</li><li><i class="fas fa-check-circle"></i> Primary and secondary intelligence</li></ul><div class="pill-group"><span class="pill">C-level briefs</span><span class="pill">Quarterly market monitor</span><span class="pill">Competitor teardown</span></div><div class="metric-highlight"><span>94% insight adoption</span><span>40% faster strategy cycles</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Request KPO sample <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-database"></i></div><h3>Data Enrichment and Hygiene</h3><div class="tile-badge">CRISP DATA</div></div>
+      <div class="tile-body"><p>Real-time B2B data cleansing, append, enrichment, and standardization. Reduce bounce rates and improve conversion by keeping CRM pristine.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 99% email deliverability guarantee</li><li><i class="fas fa-check-circle"></i> 30+ data attributes enriched</li><li><i class="fas fa-check-circle"></i> Automated duplicate merging and validation</li></ul><div class="pill-group"><span class="pill">GDPR and SOC2 compliant</span><span class="pill">Salesforce native</span><span class="pill">Weekly refresh</span></div><div class="metric-highlight"><span>12M records processed monthly</span><span>68% less data decay</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Run free data audit <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-chalkboard-user"></i></div><h3>Revenue Operations and CRM</h3><div class="tile-badge">OPS EXCELLENCE</div></div>
+      <div class="tile-body"><p>End-to-end management of Salesforce, HubSpot, Pipedrive. Territory alignment, forecasting models, deal desk support, and pipeline health analytics.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Dedicated RevOps strategist</li><li><i class="fas fa-check-circle"></i> Custom dashboards and KPIs</li><li><i class="fas fa-check-circle"></i> 2-week CRM audit and revamp</li></ul><div class="pill-group"><span class="pill">Lead scoring models</span><span class="pill">Forecast accuracy over 90%</span><span class="pill">Automated workflows</span></div><div class="metric-highlight"><span>35% less admin time for reps</span><span>22% forecast accuracy</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Optimize your CRM <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-robot"></i></div><h3>Hyper-Automation Workflows</h3><div class="tile-badge">AI FLOWS</div></div>
+      <div class="tile-body"><p>Custom multi-channel outreach sequences, lead routing, meeting booking, and follow-up automations using n8n, Zapier, and Make.com. Connects sales stack seamlessly.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 80% reduction in manual tasks</li><li><i class="fas fa-check-circle"></i> Triggers based on real-time intent</li><li><i class="fas fa-check-circle"></i> Integrates with 100+ apps</li></ul><div class="pill-group"><span class="pill">SDR bot</span><span class="pill">Email sequencing</span><span class="pill">Lead enrichment triggers</span></div><div class="metric-highlight"><span>15+ hours per week saved per rep</span><span>3x reply rates</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Design automation blueprint <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-bullseye"></i></div><h3>ABM Intelligence and Orchestration</h3><div class="tile-badge">TARGET ACCOUNTS</div></div>
+      <div class="tile-body"><p>Identify high-fit accounts, generate account-specific insights, curated contacts discovery, and orchestrate personalized plays at scale.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 500+ account deep-dives per month</li><li><i class="fas fa-check-circle"></i> Predictive lookalike expansion</li><li><i class="fas fa-check-circle"></i> Engagement scoring for named accounts</li></ul><div class="pill-group"><span class="pill">1:1 account plans</span><span class="pill">Buying committee mapping</span><span class="pill">Sales navigator sync</span></div><div class="metric-highlight"><span>3x win rate on target list</span><span>50% shorter sales cycles</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Launch ABM pilot <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-chart-simple"></i></div><h3>Win-Loss and Competitive Intel</h3><div class="tile-badge">DECISIVE EDGE</div></div>
+      <div class="tile-body"><p>Deep dive into closed-won and closed-lost deals. Track competitor pricing, product changes, positioning, and market perception. Actionable battlecards delivered monthly.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 40+ competitor trackers</li><li><i class="fas fa-check-circle"></i> Quarterly threat landscape</li><li><i class="fas fa-check-circle"></i> Sales enablement decks</li></ul><div class="pill-group"><span class="pill">Battlecards</span><span class="pill">Positioning workshops</span><span class="pill">Gap analysis</span></div><div class="metric-highlight"><span>34% higher win rate after intel</span><span>400+ interviews per year</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Get competitor radar <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-headset"></i></div><h3>Call Analytics and Coaching</h3><div class="tile-badge">VOICE AI</div></div>
+      <div class="tile-body"><p>Analyze sales calls using NLP to uncover objection patterns, talk-to-listen ratio, competitor mentions, and winning keywords. Provide coaching recommendations and opportunity scoring.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Automated call scoring</li><li><i class="fas fa-check-circle"></i> Topic clustering and sentiment</li><li><i class="fas fa-check-circle"></i> Daily briefing dashboards</li></ul><div class="pill-group"><span class="pill">Gong integration</span><span class="pill">Real-time alerts</span><span class="pill">Training assets</span></div><div class="metric-highlight"><span>35% rep ramp acceleration</span><span>2x coaching effectiveness</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Audit 30 calls free <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-envelopes-bulk"></i></div><h3>Lead Nurture and Marketing Ops</h3><div class="tile-badge">DEMAND OPS</div></div>
+      <div class="tile-body"><p>Manage email nurture sequences, retargeting workflows, webinar follow-ups, and marketing attribution. Connect marketing to pipeline revenue with full-funnel analytics.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 5-stage nurture tracks</li><li><i class="fas fa-check-circle"></i> Dynamic segmentation</li><li><i class="fas fa-check-circle"></i> Multi-channel orchestration</li></ul><div class="pill-group"><span class="pill">HubSpot ops</span><span class="pill">Marketo experts</span><span class="pill">ROI attribution</span></div><div class="metric-highlight"><span>45% open rate increase</span><span>5x marketing-sourced pipeline</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Optimize nurture <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-globe"></i></div><h3>TAM Expansion and Whitespace</h3><div class="tile-badge">MARKET EXPANSION</div></div>
+      <div class="tile-body"><p>Identify net-new market segments, international expansion targets, and whitespace analysis across existing accounts. Data-driven account tiering and territory planning.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Geospatial territory analytics</li><li><i class="fas fa-check-circle"></i> Cross-sell opportunity scoring</li><li><i class="fas fa-check-circle"></i> Industry trend heatmaps</li></ul><div class="pill-group"><span class="pill">EU and APAC expansion</span><span class="pill">Lookalike modeling</span><span class="pill">Total addressable mapping</span></div><div class="metric-highlight"><span>$2.1B uncovered TAM value</span><span>2x faster territory planning</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Request TAM study <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-microchip"></i></div><h3>SalesTech and MarTech Advisory</h3><div class="tile-badge">STACK AUDIT</div></div>
+      <div class="tile-body"><p>Review current revenue tooling, vendor consolidation, implementation guidance, and custom integrations. Maximize ROI from CRM, enrichment, dialers, and analytics tools.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Tool redundancy elimination</li><li><i class="fas fa-check-circle"></i> Custom API workflows</li><li><i class="fas fa-check-circle"></i> Cost optimization roadmap</li></ul><div class="pill-group"><span class="pill">Salesforce partner</span><span class="pill">HubSpot accredited</span><span class="pill">Data stack audit</span></div><div class="metric-highlight"><span>20-30% SaaS cost reduction</span><span>60% faster lead-to-cash</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Schedule stack audit <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+
+    <div class="service-tile reveal">
+      <div class="tile-header"><div class="tile-icon"><i class="fas fa-users"></i></div><h3>Managed KPO Pods White-Label</h3><div class="tile-badge">FULLY MANAGED</div></div>
+      <div class="tile-body"><p>Build a dedicated offshore research and ops team that integrates as your internal unit. Researchers, data analysts, and automation specialists aligned to your SLAs and culture.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> 2-week hiring and ramp-up</li><li><i class="fas fa-check-circle"></i> Native-level English analysts</li><li><i class="fas fa-check-circle"></i> ISO27001 certified processes</li></ul><div class="pill-group"><span class="pill">Flexible pod sizes</span><span class="pill">Daily standups</span><span class="pill">NPS track record 85+</span></div><div class="metric-highlight"><span>50+ embedded teams active</span><span>60% lower operational cost</span></div></div>
+      <div class="tile-footer"><a href="#" class="learn-more">Build your KPO pod <i class="fas fa-arrow-right"></i></a></div>
+    </div>
+  </div>
+
+  <div class="reveal" style="background: var(--bg-3); border-radius: 48px; padding: 48px 40px; margin: 40px 0; border: 1px solid var(--border);">
+    <div style="display: flex; flex-wrap: wrap; gap: 48px; justify-content: space-between;">
+      <div><i class="fas fa-chart-pie" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: block;"></i><h3 style="font-size: 1.3rem;">Analytics Engineering</h3><p style="color: var(--text-2);">Custom revenue dashboards, attribution models, predictive funnel analytics.</p></div>
+      <div><i class="fas fa-cloud-arrow-up" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: block;"></i><h3 style="font-size: 1.3rem;">Reverse ETL and Sync</h3><p style="color: var(--text-2);">Sync enriched data to any destination: Salesforce, HubSpot, Marketo, CDPs.</p></div>
+      <div><i class="fas fa-shield-alt" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: block;"></i><h3 style="font-size: 1.3rem;">GDPR and Compliance Ops</h3><p style="color: var(--text-2);">Data privacy management, consent tracking, opt-out handling included.</p></div>
+      <div><i class="fas fa-brain" style="font-size: 2rem; color: var(--accent); margin-bottom: 12px; display: block;"></i><h3 style="font-size: 1.3rem;">Generative AI for Reps</h3><p style="color: var(--text-2);">AI-generated research briefs, account summaries, personalized email drafts.</p></div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-bottom: 50px; text-align: center;">
+    <div class="badge">SERVICE ARCHITECTURE</div>
+    <h2>Built on 5 Core Pillars</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; margin-top: 32px;">
+      <div style="background: var(--surface); padding: 20px 28px; border-radius: 60px; transition: var(--transition);"><i class="fas fa-dice-d6"></i> 1. Lead Velocity</div>
+      <div style="background: var(--surface); padding: 20px 28px; border-radius: 60px; transition: var(--transition);"><i class="fas fa-chart-line"></i> 2. Data Intelligence</div>
+      <div style="background: var(--surface); padding: 20px 28px; border-radius: 60px; transition: var(--transition);"><i class="fas fa-rotate"></i> 3. Process Automation</div>
+      <div style="background: var(--surface); padding: 20px 28px; border-radius: 60px; transition: var(--transition);"><i class="fas fa-chalkboard"></i> 4. Revenue Analytics</div>
+      <div style="background: var(--surface); padding: 20px 28px; border-radius: 60px; transition: var(--transition);"><i class="fas fa-chart-line"></i> 5. Strategic KPO</div>
+    </div>
+  </div>
+
+  <div id="contacts" class="reveal" style="background: var(--bg-2); border-radius: 48px; padding: 48px; margin: 48px 0; text-align: center; border: 1px solid var(--border);">
+    <h2 style="font-size: 1.8rem;">Ready to unlock precision intelligence</h2>
+    <p style="color: var(--text-2); max-width: 560px; margin: 12px auto 28px;">Talk to a solutions architect about any service module or custom KPO engagement.</p>
+    <a href="contacts.html" class="btn btn-primary" style="font-size: 1rem;">Schedule strategic call <i class="fas fa-arrow-right"></i></a>
+    <p style="margin-top: 24px; font-size: 0.75rem; color: var(--text-3);">All engagements include SLAs, weekly reporting, and dedicated CS lead.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+      <div><div class="logo">kutchi<span>Research</span></div><p style="margin-top: 12px; color: var(--text-2);">Your B2B growth backbone. KPO, data and automation.</p></div>
+      <div class="footer-links"><h4>Services</h4><a href="#">Lead Gen</a><a href="#">Data Enrichment</a><a href="#">KPO</a></div>
+      <div class="footer-links"><h4>Resources</h4><a href="#">Case studies</a><a href="#">Whitepapers</a><a href="#">Blog</a></div>
+      <div class="footer-links"><h4>Legal</h4><a href="#">Privacy</a><a href="#">Terms</a><a href="#">GDPR</a></div>
+    </div>
+    <hr>
+    <div style="text-align: center; font-size: 0.8rem; color: var(--text-3);">© 2025 Kutchi Research. Precision. Intelligence. Growth. Over 30 service modules for modern revenue teams.</div>
+  </div>
+</footer>
+
+<script>
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+  const hoverEls = 'a, button, .service-tile, .pill, .learn-more, .sticky-cta, .btn';
+  document.querySelectorAll(hoverEls).forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('large'); ring.classList.add('large'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('large'); ring.classList.remove('large'); });
+  });
+  window.addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - window.innerHeight; document.getElementById('progress-bar').style.width = (window.scrollY / h * 100) + '%'; });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  const canvas = document.createElement('canvas');
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '0';
+  document.body.appendChild(canvas);
+  const ctx2 = canvas.getContext('2d');
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  let particles = [];
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.3 + 0.1
+    });
+  }
+  function drawParticles() {
+    ctx2.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx2.beginPath();
+      ctx2.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx2.fillStyle = `rgba(65, 255, 170, ${p.a})`;
+      ctx2.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+</script>
+</body>
+</html>

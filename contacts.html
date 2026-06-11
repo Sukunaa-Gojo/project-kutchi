@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Contact Us | Kutchi Research — Let's Scale Your Growth</title>
+  <meta name="description" content="Get in touch with Kutchi Research. Schedule a consultation, request a proposal, or ask our experts about KPO, lead generation, data enrichment and automation solutions.">
+    <link rel="shortcut icon" href="ChatGPT Image Jun 5, 2026, 11_51_53 AM.png" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #070709;
+      --bg-2: #0c0c10;
+      --bg-3: #111116;
+      --surface: rgba(255,255,255,0.032);
+      --surface-2: rgba(255,255,255,0.055);
+      --border: rgba(255,255,255,0.068);
+      --border-hi: rgba(100, 255, 180, 0.28);
+      --accent: #41ffaa;
+      --accent-2: #00ddff;
+      --accent-dim: rgba(65,255,170,0.07);
+      --accent-dim2: rgba(65,255,170,0.12);
+      --text: #eeeef0;
+      --text-2: #7a7a86;
+      --text-3: #3f3f4a;
+      --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.2);
+      --shadow-hover: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+      --transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      --radius: 12px;
+      --radius-lg: 24px;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    #cursor-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.15s, height 0.15s;
+    }
+
+    #cursor-ring {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(65, 255, 170, 0.35);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width 0.22s, height 0.22s;
+    }
+
+    #cursor-dot.large { width: 16px; height: 16px; background: var(--accent); }
+    #cursor-ring.large { width: 52px; height: 52px; border-color: rgba(65, 255, 170, 0.6); }
+
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      z-index: 10001;
+      width: 0%;
+      transition: width 0.08s linear;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+      background-size: 80px 80px;
+      pointer-events: none;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+ 
+    h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      margin-bottom: 1rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      cursor: none;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(95deg, var(--accent), var(--accent-2));
+      color: #0B0B0B;
+      box-shadow: 0 10px 30px rgba(65, 255, 170, 0.25);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(65, 255, 170, 0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid rgba(65, 255, 170, 0.4);
+      color: var(--accent);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-dim);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .btn-lg { padding: 16px 36px; font-size: 1rem; }
+
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(7, 7, 9, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+    }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.7rem;
+      font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo span { background: none; -webkit-background-clip: unset; color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-2);
+      font-weight: 500;
+      transition: color 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    .contact-hero {
+      min-height: 50vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .contact-hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 55% at 50% 40%, rgba(65, 255, 170, 0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 48px;
+    }
+
+    .contact-info {
+      background: var(--bg-2);
+      border-radius: 32px;
+      padding: 48px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .contact-info:hover {
+      border-color: var(--border-hi);
+      transform: translateY(-5px);
+    }
+
+    .info-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .info-card:last-child { border-bottom: none; }
+
+    .info-card:hover { transform: translateX(8px); }
+
+    .info-icon {
+      width: 56px;
+      height: 56px;
+      background: var(--surface);
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 1.5rem;
+      transition: var(--transition);
+    }
+
+    .info-card:hover .info-icon {
+      background: var(--accent-dim);
+      transform: scale(1.05);
+    }
+
+    .info-content h3 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+    }
+
+    .info-content p {
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    .contact-form {
+      background: var(--bg-2);
+      border-radius: 32px;
+      padding: 48px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .contact-form:hover {
+      border-color: var(--border-hi);
+    }
+
+    .form-group {
+      margin-bottom: 24px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-2);
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px 18px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      transition: var(--transition);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(65, 255, 170, 0.1);
+    }
+
+    .checkbox-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .checkbox-group input {
+      width: auto;
+      width: 18px;
+      height: 18px;
+    }
+
+    .map-section {
+      margin-top: 60px;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .map-section:hover {
+      border-color: var(--border-hi);
+    }
+
+    .map-placeholder {
+      background: var(--bg-3);
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 28px;
+      margin-top: 48px;
+    }
+
+    .faq-item {
+      background: var(--bg-2);
+      border-radius: 24px;
+      padding: 28px;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .faq-item:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-hi);
+    }
+
+    .faq-item h3 {
+      font-size: 1.2rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+
+    .faq-item p {
+      color: var(--text-2);
+      line-height: 1.6;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: linear-gradient(145deg, var(--accent), var(--accent-2));
+      color: #0B0B0B;
+      border-radius: 60px;
+      padding: 14px 32px;
+      font-weight: 700;
+      z-index: 99;
+      box-shadow: 0 8px 25px rgba(65, 255, 170, 0.3);
+      transition: var(--transition);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .sticky-cta:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(65, 255, 170, 0.5);
+    }
+
+    footer {
+      background: var(--bg-2);
+      border-top: 1px solid var(--border);
+      padding: 60px 0 30px;
+      margin-top: 40px;
+    }
+
+    .footer-links a {
+      color: var(--text-2);
+      text-decoration: none;
+      transition: color 0.2s;
+      line-height: 2;
+      display: block;
+    }
+
+    .footer-links a:hover { color: var(--accent); }
+
+    hr { border-color: var(--border); margin: 32px 0; }
+
+    .social-links {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      background: var(--surface);
+      border-radius: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-2);
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      color: #0B0B0B;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 768px) {
+      .container { padding: 0 20px; }
+      .nav-links { display: none; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-info, .contact-form { padding: 28px; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ===== HAMBURGER MENU ===== */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 6px;
+      background: none;
+      border: none;
+      z-index: 1100;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(7,7,9,0.97);
+      backdrop-filter: blur(24px);
+      z-index: 1050;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      padding: 40px 24px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .mobile-nav a:hover, .mobile-nav a.active { color: var(--accent); }
+    .mobile-nav .btn {
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      .nav-links { display: none !important; }
+      .navbar .btn-outline { display: none; }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 60px 0; }
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.8rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+      .contact-info, .contact-form { padding: 24px; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .sticky-cta { bottom: 16px; right: 16px; padding: 12px 20px; font-size: 0.85rem; }
+      footer .container > div { flex-direction: column; gap: 24px; }
+    }
+
+  </style>
+</head>
+<body>
+
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+<div id="progress-bar"></div>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="services.html">Services</a>
+  <a href="about.html">About Us</a>
+  <a href="pricing.html">Pricing</a>
+  <a href="contacts.html" class="active">Contact</a>
+  <a href="contacts.html" class="btn btn-primary btn-lg">Get Proposal</a>
+</div>
+
+<a href="#contact-form-section" class="sticky-cta"><i class="fas fa-paper-plane"></i> Send Message</a>
+
+<nav class="navbar">
+  <div class="container nav-flex">
+    <div class="logo">Kutchi<span>Research</span></div>
+    <div class="nav-links">
+    <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+     
+      <a href="about.html">About Us</a>
+      <a href="pricing.html">Pricing</a>
+      <a href="contacts.html" class="active">Contact</a>
+    </div>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <a href="contacts.html" class="btn btn-outline">Get Proposal</a>  </div>
+</nav>
+
+<section class="contact-hero">
+  <div class="contact-hero-bg"></div>
+  <div class="container">
+    <div class="reveal">
+      <div class="badge">LET'S CONNECT</div>
+      <h1>Ready to Transform<br><span class="gradient-text">Your Revenue Operations?</span></h1>
+      <p style="font-size: 1.2rem; color: var(--text-2); max-width: 680px; margin: 24px 0;">Whether you need a custom KPO solution, lead generation at scale, or a complete revenue operations overhaul, our team is ready to help.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h2 style="margin-bottom: 32px;">Get in Touch</h2>
+      
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="info-content">
+          <h3>Visit Us</h3>
+          <p>1010 Avenue of the Americas<br>New York, NY 10018<br>United States</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-phone-alt"></i></div>
+        <div class="info-content">
+          <h3>Call Us</h3>
+          <p>Sales: +1 (888) 407-9426<br>Support: +1 (888) 407-9427<br>Mon-Fri, 9am to 6pm EST</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-envelope"></i></div>
+        <div class="info-content">
+          <h3>Email Us</h3>
+          <p>General Inquiries: hello@Kutchiresearch.com<br>Sales: sales@Kutchiresearch.com<br>Support: support@Kutchiresearch.com</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <div class="info-icon"><i class="fas fa-clock"></i></div>
+        <div class="info-content">
+          <h3>Office Hours</h3>
+          <p>Monday - Friday: 9:00 AM - 8:00 PM EST<br>Saturday: 10:00 AM - 4:00 PM EST<br>Sunday: Closed</p>
+        </div>
+      </div>
+
+      <div class="social-links">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+
+    <div id="contact-form-section" class="contact-form reveal">
+      <h2 style="margin-bottom: 32px;">Send Us a Message</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label>Full Name <span style="color: var(--accent);">*</span></label>
+          <input type="text" placeholder="John Doe" required>
+        </div>
+        <div class="form-group">
+          <label>Company Email <span style="color: var(--accent);">*</span></label>
+          <input type="email" placeholder="john@company.com" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+1 (555) 000-0000">
+        </div>
+        <div class="form-group">
+          <label>Company Name <span style="color: var(--accent);">*</span></label>
+          <input type="text" placeholder="Your Company" required>
+        </div>
+        <div class="form-group">
+          <label>Job Title</label>
+          <input type="text" placeholder="VP of Sales, Head of RevOps, etc.">
+        </div>
+        <div class="form-group">
+          <label>Interested In <span style="color: var(--accent);">*</span></label>
+          <select required>
+            <option value="">Select a service</option>
+            <option>Lead Generation and Prospecting</option>
+            <option>Data Enrichment and Cleansing</option>
+            <option>CRM Management and Sales Ops</option>
+            <option>Automation Workflows</option>
+            <option>KPO and Market Research</option>
+            <option>ABM Intelligence</option>
+            <option>Custom Enterprise Solution</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Budget Range</label>
+          <select>
+            <option>$0 - $1,000 per month</option>
+            <option>$1,000 - $3,000 per month</option>
+            <option>$3,000 - $7,000 per month</option>
+            <option>$7,000 - $15,000 per month</option>
+            <option>$15,000+ per month</option>
+            <option>Custom Enterprise</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>How Can We Help? <span style="color: var(--accent);">*</span></label>
+          <textarea rows="4" placeholder="Tell us about your growth challenges, ideal KPO scope, or any specific requirements..." required></textarea>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="newsletter" checked>
+          <label for="newsletter" style="margin-bottom: 0;">Subscribe to our monthly insights and research reports</label>
+        </div>
+        <div class="form-group checkbox-group">
+          <input type="checkbox" id="privacy" required>
+          <label for="privacy" style="margin-bottom: 0;">I agree to the <a href="#" style="color: var(--accent);">Privacy Policy</a> and consent to data processing <span style="color: var(--accent);">*</span></label>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 16px;">Send Message <i class="fas fa-arrow-right"></i></button>
+        <p style="text-align: center; margin-top: 20px; font-size: 0.75rem; color: var(--text-3);">We typically respond within 12 business hours.</p>
+      </form>
+    </div>
+  </div>
+
+  <div class="map-section reveal">
+    <div class="map-placeholder">
+      <i class="fas fa-map-marked-alt" style="font-size: 3rem; color: var(--accent);"></i>
+      <p style="color: var(--text-2);">Interactive Map — New York City Headquarters</p>
+      <p style="font-size: 0.8rem; color: var(--text-3);">1010 Avenue of the Americas, New York, NY 10018</p>
+    </div>
+  </div>
+
+  <div class="reveal" style="text-align: center; margin: 60px 0 40px;">
+    <div class="badge">FREQUENTLY ASKED QUESTIONS</div>
+    <h2>Everything You Need <span class="gradient-text">To Know</span></h2>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-item reveal">
+      <h3>How quickly can I expect a response?</h3>
+      <p>Our team aims to respond to all inquiries within 12 business hours. For urgent matters, please call our support line at +1 (888) 407-9426.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>Do you offer custom enterprise solutions?</h3>
+      <p>Absolutely. We provide fully customized KPO pods, dedicated teams, and tailored automation workflows for enterprise clients. Contact us for a detailed proposal.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>What industries do you specialize in?</h3>
+      <p>We serve IT, manufacturing, automotive, FMCG, banking, pharmaceutical, retail, e-commerce, energy, and many more. Our analysts are domain-trained.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>Is my data secure with Kutchi Research?</h3>
+      <p>Yes. We are GDPR and CCPA compliant, SOC 2 Type II certified, and follow strict data protection protocols. Your data never leaves secure environments.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>Can I schedule a free consultation?</h3>
+      <p>Yes. We offer a complimentary 30-minute growth audit where we analyze your current operations and recommend a tailored solution. Just mention this in your message.</p>
+    </div>
+    <div class="faq-item reveal">
+      <h3>What is your typical onboarding process?</h3>
+      <p>Onboarding takes 3-7 days depending on complexity. We start with a discovery call, followed by data integration, and then a phased rollout with weekly check-ins.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px;">
+      <div><div class="logo">Kutchi<span>Research</span></div><p style="margin-top: 12px; color: var(--text-2);">Precision. Intelligence. Growth.</p></div>
+      <div class="footer-links"><h4>Solutions</h4><a href="#">KPO Services</a><a href="#">Data Enrichment</a><a href="#">Lead Generation</a><a href="#">Automation</a></div>
+      <div class="footer-links"><h4>Company</h4><a href="about.html">About Us</a><a href="#">Why Kutchi</a><a href="#">Industries</a><a href="#">Careers</a></div>
+      <div class="footer-links"><h4>Legal</h4><a href="#">GDPR</a><a href="#">Privacy Policy</a><a href="#">Terms of Service</a><a href="#">Security</a></div>
+    </div>
+    <hr>
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+      <div style="font-size: 0.8rem; color: var(--text-3);">© 2025 Kutchi Research. Your Backend Growth Engine. All rights reserved.</div>
+      <div class="social-links" style="margin-top: 0;">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const dot = document.getElementById('cursor-dot');
+  const ring = document.getElementById('cursor-ring');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+  function animateRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+  const hoverEls = 'a, button, .info-card, .faq-item, .contact-info, .contact-form, input, select, textarea, .sticky-cta, .btn, .social-links a';
+  document.querySelectorAll(hoverEls).forEach(el => {
+    el.addEventListener('mouseenter', () => { dot.classList.add('large'); ring.classList.add('large'); });
+    el.addEventListener('mouseleave', () => { dot.classList.remove('large'); ring.classList.remove('large'); });
+  });
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    document.getElementById('progress-bar').style.width = (window.scrollY / h * 100) + '%';
+  });
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href === "#" || href === "") return;
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    alert('Thank you for reaching out. A senior strategist will respond within 12 hours.');
+    this.reset();
+  });
+  const canvas = document.createElement('canvas');
+  canvas.style.position = 'fixed';
+  canvas.style.top = '0';
+  canvas.style.left = '0';
+  canvas.style.width = '100%';
+  canvas.style.height = '100%';
+  canvas.style.pointerEvents = 'none';
+  canvas.style.zIndex = '0';
+  document.body.appendChild(canvas);
+  const ctx2 = canvas.getContext('2d');
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resizeCanvas();
+  window.addEventListener('resize', resizeCanvas);
+  let particles = [];
+  for (let i = 0; i < 80; i++) {
+    particles.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      r: Math.random() * 1.5 + 0.5,
+      dx: (Math.random() - 0.5) * 0.3,
+      dy: (Math.random() - 0.5) * 0.3,
+      a: Math.random() * 0.3 + 0.1
+    });
+  }
+  function drawParticles() {
+    ctx2.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx2.beginPath();
+      ctx2.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx2.fillStyle = `rgba(65, 255, 170, ${p.a})`;
+      ctx2.fill();
+      p.x += p.dx;
+      p.y += p.dy;
+      if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+      if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger?.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+    document.body.style.overflow = mobileNav.classList.contains('open') ? 'hidden' : '';
+  });
+  mobileNav?.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+</script>
+</body>
+</html>
